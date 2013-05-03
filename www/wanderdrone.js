@@ -1,11 +1,12 @@
 function wanderdrone_init(debug){
 
-	var base_template = 'http://example.com/layer/{Z}/{X}/{Y}.png';
-	var base_layer = new MM.TemplatedLayer(base_template);
+	var subdomains = [ 'a.', 'b.', 'c.', 'd.' ];
+	var base_template = 'http://{S}tiles.mapbox.com/v3/herwig.map-fzavh3a8,examples.map-modis-watermask-dev/{Z}/{X}/{Y}.png';
+	var base_layer = new MM.TemplatedLayer(base_template, subdomains);
 
 	var map = new MM.Map('map', base_layer);
 
-	map.setZoomRange(3, 14);
+	map.setZoomRange(2,6);
 
 	var lat = random_latitude();
 	var lon = random_longitude();
@@ -14,7 +15,7 @@ function wanderdrone_init(debug){
 	if (debug){
 		lat = 37.75;
 		lon = -122.45;
-		zoom = 11;
+		zoom = 12;
 	}
 
 	var center = new MM.Location(lat, lon);
