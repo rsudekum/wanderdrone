@@ -1,16 +1,16 @@
 function wanderdrone_init(debug){
 
 	var subdomains = [ 'a.', 'b.', 'c.', 'd.' ];
-	var base_template = 'http://{S}tiles.mapbox.com/v3/herwig.map-fzavh3a8,examples.map-modis-watermask-dev/{Z}/{X}/{Y}.png';
+	var base_template = 'https://api-maps-staging.tilestream.net/v3/yummo.j4ahg35p/{Z}/{X}/{Y}.png';
 	var base_layer = new MM.TemplatedLayer(base_template, subdomains);
 
 	var map = new MM.Map('map', base_layer);
 
-	map.setZoomRange(2,6);
+	map.setZoomRange(13,17);
 
 	var lat = random_latitude();
 	var lon = random_longitude();
-	var zoom = random_int(4, 7);
+	var zoom = random_int(13,17);
 
 	if (debug){
 		lat = 37.75;
@@ -64,8 +64,8 @@ function wanderdrone_init(debug){
 
 			coords.innerHTML = html;
 
-			move(x, y);	
-		}, 50);
+			move(x, y);
+		}, 10);
 	};
 
 	var set_direction = function(){
@@ -104,10 +104,10 @@ function wanderdrone_init(debug){
 		var deg = wanderdrone_get_degrees(x, y);
 		wanderdrone_rotate_drone(deg);
 
-		var delay = parseInt(Math.random() * 60000);
-		delay = Math.max(15000, delay);
+		var delay = parseInt(Math.random() * 1000);
+		delay = Math.max(10000, delay);
 
-		var zoom_by = Math.random() * 2;
+		var zoom_by = Math.random();
 		zoom_by = parseInt(zoom_by);
 
 		zoom_by = (random_boolean()) ? zoom_by : - zoom_by;
@@ -202,16 +202,16 @@ function random_int(min, max){
 
 
 function random_latitude(){
-	return random_coordinate(90);
-}	
+	return Math.floor(Math.random() * (50 - 26 + 1)) + 26;
+}
 
 function random_longitude(){
-	return random_coordinate(180);
-}	
-
-function random_coordinate(max){
-	return (Math.random() - 0.5) * max;
+	return Math.floor(Math.random() * (-64.424 + 116.851 + 1)) - 116.851;
 }
+
+// function random_coordinate(max){
+// 	return (Math.random() - 0.5) * max;
+// }
 
 function random_boolean(){
 	var dt = new Date();
