@@ -1,7 +1,7 @@
 function wanderdrone_init(debug){
 
 	var subdomains = [ 'a.', 'b.', 'c.', 'd.' ];
-	var base_template = 'https://api-maps-staging.tilestream.net/v3/yummo.j4ahg35p/{Z}/{X}/{Y}.png';
+	var base_template = 'https://b.tiles.mapbox.com/v4/mapbox.k19p8bdp/{Z}/{X}/{Y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImdQMzI4WjgifQ.d-Uyr7NBjrJVz9z82uk5Xg';
 	var base_layer = new MM.TemplatedLayer(base_template, subdomains);
 
 	var map = new MM.Map('map', base_layer);
